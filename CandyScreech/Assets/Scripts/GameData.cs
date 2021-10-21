@@ -5,11 +5,12 @@ using BreakInfinity;
 public class GameData
 {
     public BigDouble candiesCount;
-    public BigDouble clickUpgradeLevel;
+    public List<BigDouble> clickUpgradeLevel;
 
     public GameData()
     {
         candiesCount = 0;
-        clickUpgradeLevel = 0;
+
+        clickUpgradeLevel = Methods.CreateList<BigDouble>(3);
     }
 }
