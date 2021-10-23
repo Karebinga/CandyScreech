@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameData data;
 
     [SerializeField] private TMP_Text candiesText;
+    [SerializeField] private TMP_Text candiesPerSecondText;
     [SerializeField] private TMP_Text clickPowerText;
 
 
@@ -21,6 +22,14 @@ public class GameManager : MonoBehaviour
         BigDouble total = 1;
         for (int i = 0; i < data.clickUpgradeLevel.Count; i++)
             total += UpgradesManager.instance.clickUpgradesBasePower[i] * data.clickUpgradeLevel[i];
+        return total;
+    }
+
+    public BigDouble CandiesPerSecond()
+    {
+        BigDouble total = 0;
+        for (int i = 0; i < data.productionUpgradeLevel.Count; i++)
+            total += UpgradesManager.instance.productionUpgradesBasePower[i] * data.productionUpgradeLevel[i];
         return total;
     }
 
@@ -34,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         candiesText.text = data.candiesCount.ToString("F0");
         clickPowerText.text = "+" + ClickPower() + " candies";
+        candiesPerSecondText.text = $"{CandiesPerSecond().ToString("F0")}/s";
+        data.candiesCount += CandiesPerSecond()*Time.deltaTime;
     }
 
 
