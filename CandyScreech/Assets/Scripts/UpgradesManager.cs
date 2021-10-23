@@ -15,6 +15,10 @@ public class UpgradesManager : MonoBehaviour
     public ScrollRect clickUpgradesScroll;
     public Transform clickUpgradesPanel;
 
+    public Image Child;
+    public Sprite[] childSprite;
+    public Canvas gameCanvas;
+
     public string[] clickUpgradeNames;
 
     public BigDouble[] clickUpgradeBaseCost; 
@@ -125,6 +129,21 @@ public class UpgradesManager : MonoBehaviour
             {
                 data.candiesCount -= UpgradeCost(type, UpgradeID);
                 upgradeLevels[UpgradeID] += 1;
+
+
+                switch (type)
+                {
+                    case "click":
+                        Child.sprite = childSprite[upgradeLevels[UpgradeID]]; // сделать что-то с ошибкой
+                        break;
+                    case "production":
+                        if (upgradeLevels[UpgradeID] > 0)
+                        {
+                            Image children = Instantiate(Child, gameCanvas.transform);
+                            children.transform.position = Child.transform.position + new Vector3(Random.Range(-300, -100), 0);
+                        }
+                        break;
+                }
             }
             UpdateUpgradeUI(type, UpgradeID);
         }

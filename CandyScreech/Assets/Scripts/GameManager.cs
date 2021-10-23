@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text candiesText;
     [SerializeField] private TMP_Text candiesPerSecondText;
     [SerializeField] private TMP_Text clickPowerText;
+
+    [SerializeField] private Image roof;
+    [SerializeField] private Image main;
+    [SerializeField] private Image window;
+    [SerializeField] private Image door;
+    [SerializeField] private Transform house;
 
 
     public BigDouble ClickPower()
@@ -35,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ChangeColor();
         data = new GameData();
         UpgradesManager.instance.StartUpgradeManager();
     }
@@ -51,6 +59,17 @@ public class GameManager : MonoBehaviour
     public void GenerateCandies()
     {
         data.candiesCount += ClickPower();
+        if ((int)data.candiesCount % 10 == 0)
+        {
+            ChangeColor();
+        }
     }
     
+    public void ChangeColor()
+    {
+        roof.color = UnityEngine.Random.ColorHSV();
+        window.color = UnityEngine.Random.ColorHSV();
+        main.color = UnityEngine.Random.ColorHSV();
+        door.color = UnityEngine.Random.ColorHSV();
+    }
 }
