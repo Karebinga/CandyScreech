@@ -37,20 +37,24 @@ public class UpgradesManager : MonoBehaviour
     public BigDouble[] productionUpgradeCostMult;
     public BigDouble[] productionUpgradesBasePower;
 
+    public GameObject[] Children;
+    public Sprite[] Costumes;
+
     public void StartUpgradeManager()
     {
-        Methods.UpgradeCheck(GameManager.instance.data.clickUpgradeLevel, 3);
+        Methods.UpgradeCheck(GameManager.instance.data.clickUpgradeLevel, 1);
+        Methods.UpgradeCheck(GameManager.instance.data.productionUpgradeLevel, 5);
 
-        clickUpgradeNames = new[] { "Click Power +1", "Click Power +5", "Click Power +10" };
-        productionUpgradeNames = new[] { "+1 Candy", "+2 Candies", "+10 Candies" };
+        clickUpgradeNames = new[] { "Outfit Upgrade" };
+        productionUpgradeNames = new[] { "Call J", "Call M", "Call L", "Call B", "Call A" };
 
-        clickUpgradeBaseCost = new BigDouble[] { 10, 50, 100 };
-        clickUpgradeCostMult = new BigDouble[] { 1.25, 1.35, 1.55 };
-        clickUpgradesBasePower = new BigDouble[] { 1, 5, 10 };
+        clickUpgradeBaseCost = new BigDouble[] { 10 };
+        clickUpgradeCostMult = new BigDouble[] { 1.25 };
+        clickUpgradesBasePower = new BigDouble[] { 1 };
 
-        productionUpgradeBaseCost = new BigDouble[] { 25, 100, 1000 };
-        productionUpgradeCostMult = new BigDouble[] { 1.5, 1.75, 2 };
-        productionUpgradesBasePower = new BigDouble[] { 1, 2, 10 };
+        productionUpgradeBaseCost = new BigDouble[] { 25, 50, 75, 100, 125 };
+        productionUpgradeCostMult = new BigDouble[] { 1.5, 1.75, 2, 2.5, 3 };
+        productionUpgradesBasePower = new BigDouble[] { 1, 2, 5, 10, 15 };
 
         for (int i = 0; i < GameManager.instance.data.clickUpgradeLevel.Count; i++)
         {
@@ -125,7 +129,7 @@ public class UpgradesManager : MonoBehaviour
 
         void Buy(List<int> upgradeLevels)
         {
-            if (data.candiesCount >= UpgradeCost(type, UpgradeID))
+            if (data.candiesCount >= UpgradeCost(type, UpgradeID) & upgradeLevels[UpgradeID] < 5)
             {
                 data.candiesCount -= UpgradeCost(type, UpgradeID);
                 upgradeLevels[UpgradeID] += 1;
@@ -134,14 +138,11 @@ public class UpgradesManager : MonoBehaviour
                 switch (type)
                 {
                     case "click":
-                        Child.sprite = childSprite[upgradeLevels[UpgradeID]]; // сделать что-то с ошибкой
+                        Child.sprite = childSprite[upgradeLevels[UpgradeID]-1]; // сделать что-то с ошибкой
                         break;
                     case "production":
-                        if (upgradeLevels[UpgradeID] > 0)
-                        {
-                            Image children = Instantiate(Child, gameCanvas.transform);
-                            children.transform.position = Child.transform.position + new Vector3(Random.Range(-300, -100), 0);
-                        }
+                        Children[UpgradeID].SetActive(true);
+                        Children[UpgradeID].GetComponent<Image>().sprite = Costumes[upgradeLevels[UpgradeID]-1];
                         break;
                 }
             }

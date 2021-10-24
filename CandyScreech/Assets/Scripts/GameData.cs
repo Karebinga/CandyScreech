@@ -13,7 +13,7 @@ public class GameData
     {
         candiesCount = 0;
 
-        clickUpgradeLevel = new int[3].ToList();
-        productionUpgradeLevel = new int[3].ToList();
+        clickUpgradeLevel = new int[1].ToList();
+        productionUpgradeLevel = new int[5].ToList();
     }
 }
