@@ -46,7 +46,7 @@ public class UpgradesManager : MonoBehaviour
         Methods.UpgradeCheck(GameManager.instance.data.productionUpgradeLevel, 5);
 
         clickUpgradeNames = new[] { "Outfit Upgrade" };
-        productionUpgradeNames = new[] { "Call J", "Call M", "Call L", "Call B", "Call A" };
+        productionUpgradeNames = new[] { "John", "John2", "John3", "John4", "John5" };
 
         clickUpgradeBaseCost = new BigDouble[] { 10 };
         clickUpgradeCostMult = new BigDouble[] { 1.25 };
@@ -70,8 +70,8 @@ public class UpgradesManager : MonoBehaviour
             productionUpgrades.Add(upgrade);
         }
 
-        clickUpgradesScroll.normalizedPosition = new Vector2(0, 0);
-        productionUpgradesScroll.normalizedPosition = new Vector2(0, 0);
+        //clickUpgradesScroll.normalizedPosition = new Vector2(0, 0);
+        //productionUpgradesScroll.normalizedPosition = new Vector2(0, 0);
         UpdateUpgradeUI("click");
         UpdateUpgradeUI("production");
 
@@ -96,9 +96,9 @@ public class UpgradesManager : MonoBehaviour
 
         void UpdateUI(List<Upgrades> upgrades, List<int> upgradeLevels, string[] upgradeNames, int ID)
         {
-            upgrades[ID].LevelText.text = upgradeLevels[ID].ToString();
-            upgrades[ID].CostText.text = $"Cost: {UpgradeCost(type, ID).ToString("F0")} candies";
-            upgrades[ID].NameText.text = upgradeNames[ID];
+            upgrades[ID].LevelText.text = upgradeNames[ID] + " Level " + upgradeLevels[ID].ToString();
+            upgrades[ID].CostText.text = $"Call \n {UpgradeCost(type, ID).ToString("F0")} candies";
+            upgrades[ID].NameText.text = "+1 candy per click";
         }
     }
 
