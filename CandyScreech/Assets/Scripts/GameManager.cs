@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         candiesText.text = data.candiesCount.ToString("F0");
-        clickPowerText.text = "+" + ClickPower() + " candies";
-        candiesPerSecondText.text = $"{CandiesPerSecond().ToString("F0")}/s";
+        //clickPowerText.text = "+" + ClickPower() + " candies";
+        //candiesPerSecondText.text = $"{CandiesPerSecond().ToString("F0")}/s";
         data.candiesCount += CandiesPerSecond()*Time.deltaTime;
     }
 

@@ -470,7 +470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4868962011466731461, guid: 3947f0395db59bd48bcf272ad4d80d1e, type: 3}
+      - m_Target: {fileID: 8651686468789365354, guid: 3947f0395db59bd48bcf272ad4d80d1e, type: 3}
         m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
         m_MethodName: BuyProductionUpgrade
         m_Mode: 1

@@ -16,7 +16,8 @@ public class UpgradesManager : MonoBehaviour
     public Transform clickUpgradesPanel;
 
     public Image Child;
-    public Sprite[] childSprite;
+    public GameObject[] childCostumes;
+    public Image head;
     public Canvas gameCanvas;
 
     public string[] clickUpgradeNames;
@@ -38,7 +39,6 @@ public class UpgradesManager : MonoBehaviour
     public BigDouble[] productionUpgradesBasePower;
 
     public GameObject[] Children;
-    public Sprite[] Costumes;
 
     public void StartUpgradeManager()
     {
@@ -97,7 +97,7 @@ public class UpgradesManager : MonoBehaviour
         void UpdateUI(List<Upgrades> upgrades, List<int> upgradeLevels, string[] upgradeNames, int ID)
         {
             upgrades[ID].LevelText.text = upgradeNames[ID] + " Level " + upgradeLevels[ID].ToString();
-            upgrades[ID].CostText.text = $"Call \n {UpgradeCost(type, ID).ToString("F0")} candies";
+            upgrades[ID].CostText.text = $"{UpgradeCost(type, ID).ToString("F0")} \n candies";
             upgrades[ID].NameText.text = "+1 candy per click";
         }
     }
@@ -138,11 +138,16 @@ public class UpgradesManager : MonoBehaviour
                 switch (type)
                 {
                     case "click":
-                        Child.sprite = childSprite[upgradeLevels[UpgradeID]-1]; // сделать что-то с ошибкой
+                        childCostumes[upgradeLevels[UpgradeID] - 1].SetActive(false);
+                        if (upgradeLevels[UpgradeID] == 2)
+                            head.color = Color.yellow;
+                        else
+                            head.color = Color.white;
+
+                        childCostumes[upgradeLevels[UpgradeID]].SetActive(true);
                         break;
                     case "production":
                         Children[UpgradeID].SetActive(true);
-                        Children[UpgradeID].GetComponent<Image>().sprite = Costumes[upgradeLevels[UpgradeID]-1];
                         break;
                 }
             }
