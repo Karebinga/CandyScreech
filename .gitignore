@@ -77,3 +77,6 @@ Change corresponding lines in .gitignore to:
 /Unity/[Oo]bj/
 /Unity/[Tt]emp/
 /Unity/[Uu]nityGenerated/
+*.log
+*.log
+*.log
