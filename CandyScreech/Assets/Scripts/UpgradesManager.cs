@@ -46,13 +46,13 @@ public class UpgradesManager : MonoBehaviour
         Methods.UpgradeCheck(GameManager.instance.data.productionUpgradeLevel, 5);
 
         clickUpgradeNames = new[] { "Outfit Upgrade" };
-        productionUpgradeNames = new[] { "John", "John2", "John3", "John4", "John5" };
+        productionUpgradeNames = new[] { "Harry", "Vlad", "Space Guy", "Cartman", "Shrek" };
 
         clickUpgradeBaseCost = new BigDouble[] { 10 };
         clickUpgradeCostMult = new BigDouble[] { 1.25 };
         clickUpgradesBasePower = new BigDouble[] { 1 };
 
-        productionUpgradeBaseCost = new BigDouble[] { 25, 50, 75, 100, 125 };
+        productionUpgradeBaseCost = new BigDouble[] { 1, 2, 3, 100, 125 };
         productionUpgradeCostMult = new BigDouble[] { 1.5, 1.75, 2, 2.5, 3 };
         productionUpgradesBasePower = new BigDouble[] { 1, 2, 5, 10, 15 };
 
@@ -99,7 +99,6 @@ public class UpgradesManager : MonoBehaviour
             var clickRate = upgradeLevels[ID] + 1;
             upgrades[ID].LevelText.text = upgradeNames[ID] + " Level " + upgradeLevels[ID].ToString();
             upgrades[ID].CostText.text = $"{UpgradeCost(type, ID).ToString("F0")} \n candies";
-            upgrades[ID].NameText.text = "+" + clickRate + " candies per click";
         }
     }
 
@@ -119,7 +118,7 @@ public class UpgradesManager : MonoBehaviour
     public void BuyUpgrade(string type, int UpgradeID)
     {
         var data = GameManager.instance.data;
-        
+        Debug.Log(UpgradeID);
         switch(type)
         {
             case "click": Buy(data.clickUpgradeLevel);

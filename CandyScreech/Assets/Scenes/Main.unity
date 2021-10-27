@@ -4673,18 +4673,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2021776017}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Chelik
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &1057831139
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5818,25 +5806,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickUpgrades: []
-  clickUpgradesPrefab: {fileID: 8651686468789365354, guid: 3947f0395db59bd48bcf272ad4d80d1e, type: 3}
+  clickUpgradesPrefab: {fileID: 4868962011466731461, guid: 76b9d28b0f4970b439907db5244438e5, type: 3}
   clickUpgradesScroll: {fileID: 1254682638}
   clickUpgradesPanel: {fileID: 1857548990}
-  Child: {fileID: 1342911713}
-  childCostumes:
-  - {fileID: 728998050}
-  - {fileID: 1164166536}
-  - {fileID: 1795805327}
-  - {fileID: 1165296047}
-  - {fileID: 1486870908}
-  - {fileID: 955194458}
-  head: {fileID: 625172615}
-  gameCanvas: {fileID: 1499106345}
+  Child: {fileID: 0}
+  childCostumes: []
+  head: {fileID: 0}
+  gameCanvas: {fileID: 0}
   clickUpgradeNames: []
   clickUpgradeBaseCost: []
   clickUpgradeCostMult: []
   clickUpgradesBasePower: []
   productionUpgrades: []
-  productionUpgradesPrefab: {fileID: 1994219513878770310, guid: 8cd677ee7e3a1f0459633e6d8e8d2bb4, type: 3}
+  productionUpgradesPrefab: {fileID: 8407175378978018138, guid: 03d0b5c2ae898fc4582b0a479cb8d692, type: 3}
   productionUpgradesScroll: {fileID: 0}
   productionUpgradesPanel: {fileID: 1684773147}
   productionUpgradeNames: []
