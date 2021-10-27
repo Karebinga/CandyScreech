@@ -96,9 +96,10 @@ public class UpgradesManager : MonoBehaviour
 
         void UpdateUI(List<Upgrades> upgrades, List<int> upgradeLevels, string[] upgradeNames, int ID)
         {
+            var clickRate = upgradeLevels[ID] + 1;
             upgrades[ID].LevelText.text = upgradeNames[ID] + " Level " + upgradeLevels[ID].ToString();
             upgrades[ID].CostText.text = $"{UpgradeCost(type, ID).ToString("F0")} \n candies";
-            upgrades[ID].NameText.text = "+1 candy per click";
+            upgrades[ID].NameText.text = "+" + clickRate + " candies per click";
         }
     }
 
