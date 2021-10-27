@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using TMPro;
 using BreakInfinity;
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         data.candiesCount += ClickPower();
         if ((int)data.candiesCount % 10 == 0)
         {
+            house.DORotate(new Vector3(0, 0, house.transform.rotation.z + 360f), 0.4f, RotateMode.FastBeyond360);
             ChangeColor();
         }
     }
