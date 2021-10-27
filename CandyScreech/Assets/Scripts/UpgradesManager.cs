@@ -40,6 +40,17 @@ public class UpgradesManager : MonoBehaviour
 
     public GameObject[] Children;
 
+    public GameObject[] Costume0;
+    public GameObject[] Costume1;
+    public GameObject[] Costume2;
+    public GameObject[] Costume3;
+    public GameObject[] Costume4;
+    public Image head0;
+    public Image head1;
+    public Image head2;
+    public Image head3;
+    public Image head4;
+
     public void StartUpgradeManager()
     {
         Methods.UpgradeCheck(GameManager.instance.data.clickUpgradeLevel, 1);
@@ -49,12 +60,12 @@ public class UpgradesManager : MonoBehaviour
         productionUpgradeNames = new[] { "Harry", "Vlad", "Space Guy", "Cartman", "Shrek" };
 
         clickUpgradeBaseCost = new BigDouble[] { 10 };
-        clickUpgradeCostMult = new BigDouble[] { 1.25 };
+        clickUpgradeCostMult = new BigDouble[] { 3 };
         clickUpgradesBasePower = new BigDouble[] { 1 };
 
-        productionUpgradeBaseCost = new BigDouble[] { 1, 2, 3, 100, 125 };
-        productionUpgradeCostMult = new BigDouble[] { 1.5, 1.75, 2, 2.5, 3 };
-        productionUpgradesBasePower = new BigDouble[] { 1, 2, 5, 10, 15 };
+        productionUpgradeBaseCost = new BigDouble[] { 5, 25, 100, 400, 2000 };
+        productionUpgradeCostMult = new BigDouble[] { 3, 3, 3, 3, 3 };
+        productionUpgradesBasePower = new BigDouble[] { 1, 5, 15, 50, 200 };
 
         for (int i = 0; i < GameManager.instance.data.clickUpgradeLevel.Count; i++)
         {
@@ -129,7 +140,7 @@ public class UpgradesManager : MonoBehaviour
 
         void Buy(List<int> upgradeLevels)
         {
-            if (data.candiesCount >= UpgradeCost(type, UpgradeID) & upgradeLevels[UpgradeID] < 5)
+            if (data.candiesCount >= UpgradeCost(type, UpgradeID) & upgradeLevels[UpgradeID] < 6)
             {
                 data.candiesCount -= UpgradeCost(type, UpgradeID);
                 upgradeLevels[UpgradeID] += 1;
@@ -148,6 +159,58 @@ public class UpgradesManager : MonoBehaviour
                         break;
                     case "production":
                         Children[UpgradeID].SetActive(true);
+                        switch(UpgradeID)
+                        {
+                            case 0:
+                                Costume0[upgradeLevels[0]-1].SetActive(false);
+                                if (upgradeLevels[0] == 3)
+                                    head0.color = Color.yellow;
+                                else
+                                    head0.color = Color.white;
+                                Costume0[upgradeLevels[UpgradeID]].SetActive(true);
+                                break;
+
+                            case 1:
+                                Costume1[upgradeLevels[1] - 1].SetActive(false);
+                                if (upgradeLevels[1] == 3)
+                                    head1.color = Color.yellow;
+                                else
+                                    head1.color = Color.white;
+                                Costume1[upgradeLevels[UpgradeID]].SetActive(true);
+                                break;
+
+                            case 2:
+                                Costume2[upgradeLevels[2] - 1].SetActive(false);
+                                if (upgradeLevels[2] == 3)
+                                    head2.color = Color.yellow;
+                                else
+                                    head2.color = Color.white;
+                                Costume2[upgradeLevels[UpgradeID]].SetActive(true);
+                                break;
+
+                            case 3:
+                                Costume3[upgradeLevels[3] - 1].SetActive(false);
+                                if (upgradeLevels[3] == 3)
+                                    head3.color = Color.yellow;
+                                else
+                                    head3.color = Color.white;
+                                Costume3[upgradeLevels[UpgradeID]].SetActive(true);
+                                break;
+
+                            case 4:
+                                Costume4[upgradeLevels[4] - 1].SetActive(false);
+                                if (upgradeLevels[4] == 3)
+                                    head4.color = Color.yellow;
+                                else
+                                    head4.color = Color.green;
+                                Costume4[upgradeLevels[UpgradeID]].SetActive(true);
+                                break;
+                               
+
+                        }
+
+
+
                         break;
                 }
             }

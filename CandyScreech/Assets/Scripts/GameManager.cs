@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image main;
     [SerializeField] private Image window;
     [SerializeField] private Image door;
+    [SerializeField] private Image body;
+    [SerializeField] private Image hat;
     [SerializeField] private Transform house;
 
 
@@ -73,5 +75,7 @@ public class GameManager : MonoBehaviour
         window.color = UnityEngine.Random.ColorHSV();
         main.color = UnityEngine.Random.ColorHSV();
         door.color = UnityEngine.Random.ColorHSV();
+        body.color = UnityEngine.Random.ColorHSV();
+        hat.color = UnityEngine.Random.ColorHSV();
     }
 }
